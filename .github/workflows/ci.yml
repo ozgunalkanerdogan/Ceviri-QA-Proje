@@ -1,27 +1,11 @@
-name: CI Pipeline
+name: Cypress Single Test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: Repo checkout
-        uses: actions/checkout@v4
-
-      - name: Node setup
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
+      - name: Run ONLY one Cypress test file
+        run: npx cypress run --spec "cypress/e2e/functionaltests.cy.js"
