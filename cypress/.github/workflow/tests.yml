@@ -1,0 +1,30 @@
+name: Vite React Cypress Test
+
+on: [push, pull_request]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        # Bağımlılıkları kurar ve cache kullanarak hızlandırır
+        uses: cypress-io/github-action@v6
+        with:
+          # Testleri koşturmadan önce Vite sunucusunu başlatır
+          start: npm run dev
+          # Sunucunun tamamen ayağa kalktığından emin olur (Örn: localhost:5173)
+          wait-on: 'http://localhost:5173'
+          # Vite genellikle 5173 portunu kullanır, projenize göre güncelleyebilirsiniz
+          browser: chrome
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-results
+          path: |
+            cypress/screenshots
+            cypress/videos
