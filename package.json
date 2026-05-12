@@ -1,0 +1,24 @@
+{
+  "name": "goit-proje-qa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozgunalkanerdogan/Vite-React-Project-QA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ozgunalkanerdogan/Vite-React-Project-QA/issues"
+  },
+  "homepage": "https://github.com/ozgunalkanerdogan/Vite-React-Project-QA#readme",
+  "devDependencies": {
+    "cypress": "^15.14.2"
+  }
+}
