@@ -1,20 +1,32 @@
-name: Run Test
+name: Cypress E2E Tests
 
 on:
   push:
     branches: ["main"]
-    
+  pull_request:
+    branches: ["main"]
+
 jobs:
-  test:
+  cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - run: npm install
+      - name: Install dependencies clean
+        run: npm ci
 
-      - run: npx cypress run --spec "cypress/e2e/functionaltests.cy.js"
+      - name: Install Cypress binary
+        run: npx cypress install
+
+      - name: Verify Cypress
+        run: npx cypress verify
+
+      - name: Run Cypress test
+        run: npx cypress run --spec "cypress/e2e/functionaltests.cy.js"
