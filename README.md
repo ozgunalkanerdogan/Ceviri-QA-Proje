@@ -16,9 +16,12 @@ npm install
 npx cypress open
 
 ## 📁 Proje Yapısı
+
+```
 cypress/
 ├── e2e/          # Test dosyaları
 └── support/      # Yardımcı fonksiyonlar
+```
 
 ## 🛠️ Kullanılan Araçlar
 
