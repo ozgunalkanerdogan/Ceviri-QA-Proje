@@ -6,6 +6,8 @@ Cypress kullanılarak otomasyon testleri yazılmıştır.
 
 ## 🚀 Kurulum
 
+> ⚠️ Node.js v24+ gereklidir
+
 1. Repoyu klonla:
 git clone https://github.com/ozgunalkanerdogan/Ceviri-QA-Proje.git
 
@@ -51,6 +53,11 @@ cypress/
 - **Cross Device & Browser** — farklı ekran boyutları ve tarayıcılarda uyumluluk
 - **Security** — XSS, yetkisiz erişim denemeleri
 - **Functional** — temel iş akışlarının doğru çalışması
+
+## 📊 Test İstatistikleri
+- Toplam otomasyon test sayısı: 13
+- Test edilen tarayıcı sayısı: 3
+- Test edilen cihaz sayısı: 3
 
 ## 👤 Yazar
 Özgün Alkan Erdoğan
