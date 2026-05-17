@@ -44,6 +44,10 @@ cypress/
 | Cross Browser | Firefox, Chrome, Safari üzerinde manuel kontrol |
 | Cross Device | Mobil, tablet ve masaüstü uyumluluk kontrolü |
 
+## 📋 Test Case'ler
+Test case'lerin tamamı Trello board'unda dokümante edilmiştir.
+👉 [Trello Board'u Görüntüle](https://trello.com/b/vb99G02E/translate-app-grup-g)
+
 ## ✅ Test Kapsamı
 
 - **Form Validation** — zorunlu alanlar, hatalı girişler, hata mesajları
