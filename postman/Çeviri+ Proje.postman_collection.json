@@ -1,0 +1,158 @@
+{
+  "info": {
+    "_postman_id": "b8105ec7-ec8b-44ad-8a63-e70294eaf0f5",
+    "name": "Çeviri+ Proje",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54757518",
+    "_collection_link": "https://go.postman.co/collection/54757518-b8105ec7-ec8b-44ad-8a63-e70294eaf0f5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET Başarı Testi",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"HTTP 200 döndü\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"API responseStatus 200 döndü\", function () {\r",
+              "    const json = pm.response.json();\r",
+              "    pm.expect(json.responseStatus).to.eql(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"translatedText alanı dolu geldi\", function () {\r",
+              "    const json = pm.response.json();\r",
+              "    pm.expect(json.responseData.translatedText).to.be.a(\"string\");\r",
+              "    pm.expect(json.responseData.translatedText).to.not.be.empty;\r",
+              "    pm.expect(json.responseData.translatedText).to.not.include(\"INVALID\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response süresi 2sn altında\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.mymemory.translated.net/get?q=test%20ediyorum&langpair=tr|en",
+          "protocol": "https",
+          "host": [
+            "api",
+            "mymemory",
+            "translated",
+            "net"
+          ],
+          "path": [
+            "get"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "test%20ediyorum"
+            },
+            {
+              "key": "langpair",
+              "value": "tr|en"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Hatalı giriş 400",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Boş input - 403 ve hata mesajı dönüyor\", function () {\r",
+              "    const json = pm.response.json();\r",
+              "    pm.expect(json.responseStatus).to.eql(\"403\");\r",
+              "    pm.expect(json.responseDetails).to.include(\"NO QUERY SPECIFIED\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.mymemory.translated.net/get?langpair=tr|en",
+          "protocol": "https",
+          "host": [
+            "api",
+            "mymemory",
+            "translated",
+            "net"
+          ],
+          "path": [
+            "get"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "test%20ediyorum",
+              "disabled": true
+            },
+            {
+              "key": "langpair",
+              "value": "tr|en"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
